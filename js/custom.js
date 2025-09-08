@@ -30,12 +30,22 @@ $(window).on('load', function () {
         });
     }
 
-    // Category filters (including More menu)
+    // Category filters with smooth scrolling
     $('.filters_menu').on('click', 'li[data-filter]', function () {
+        const $this = $(this);
         $('.filters_menu li').removeClass('active');
-        $(this).addClass('active');
-        buttonFilter = $(this).attr('data-filter') || '*';
+        $this.addClass('active');
+        buttonFilter = $this.attr('data-filter') || '*';
         applyFilters();
+        
+        // Smooth scroll to center the active category
+        const container = $('.category-scroll');
+        const scrollLeft = $this.offset().left + container.scrollLeft() - 
+            (container.width() / 2) + ($this.width() / 2);
+        
+        container.animate({
+            scrollLeft: scrollLeft
+        }, 300);
 
         // Mark selected in More menu when applicable
         var $mm = $('.filters_menu .more .more-menu li');

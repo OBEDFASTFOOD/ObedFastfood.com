@@ -164,23 +164,67 @@
       </h2>
     </div>
 
-    <!-- filter buttons -->
-    <ul class="filters_menu">
-      <li class="active" data-filter="*">All</li>
-      <li data-filter=".rice">Rice</li>
-      <li data-filter=".wings">Wings</li>
-      <li data-filter=".wraps">Wraps</li>
-      <li class="more">
-        <button type="button" id="moreFiltersBtn" aria-expanded="false">More</button>
-        <ul class="more-menu" aria-label="More categories">
-          <li data-filter=".noodles">Noodles</li>
-          <li data-filter=".fries">Fries</li>
-          <li data-filter=".yam">Yam</li>
-          <li data-filter=".fish">Fish</li>
-          <li data-filter=".sauce">Sauce</li>
+    <!-- Category Navigation -->
+    <nav class="menu-categories" aria-label="Menu Categories">
+      <div class="category-scroll">
+        <ul class="filters_menu">
+          <li class="active" data-filter="*">
+            <button type="button" class="category-btn">
+              <span class="category-icon">🌟</span>
+              <span class="category-name">All</span>
+            </button>
+          </li>
+          <li data-filter=".rice">
+            <button type="button" class="category-btn">
+              <span class="category-icon">🍚</span>
+              <span class="category-name">Rice</span>
+            </button>
+          </li>
+          <li data-filter=".wings">
+            <button type="button" class="category-btn">
+              <span class="category-icon">🍗</span>
+              <span class="category-name">Wings</span>
+            </button>
+          </li>
+          <li data-filter=".wraps">
+            <button type="button" class="category-btn">
+              <span class="category-icon">🌯</span>
+              <span class="category-name">Wraps</span>
+            </button>
+          </li>
+          <li data-filter=".noodles">
+            <button type="button" class="category-btn">
+              <span class="category-icon">🍜</span>
+              <span class="category-name">Noodles</span>
+            </button>
+          </li>
+          <li data-filter=".fries">
+            <button type="button" class="category-btn">
+              <span class="category-icon">🍟</span>
+              <span class="category-name">Fries</span>
+            </button>
+          </li>
+          <li data-filter=".yam">
+            <button type="button" class="category-btn">
+              <span class="category-icon">🍠</span>
+              <span class="category-name">Yam</span>
+            </button>
+          </li>
+          <li data-filter=".fish">
+            <button type="button" class="category-btn">
+              <span class="category-icon">🐟</span>
+              <span class="category-name">Fish</span>
+            </button>
+          </li>
+          <li data-filter=".sauce">
+            <button type="button" class="category-btn">
+              <span class="category-icon">🥫</span>
+              <span class="category-name">Sauce</span>
+            </button>
+          </li>
         </ul>
-      </li>
-    </ul>
+      </div>
+    </nav>
 
     <div class="filters-content">
       <div class="row grid">
