@@ -27,6 +27,27 @@
 
   <!-- Custom styles for this template -->
   <link href="css/style.css" rel="stylesheet" />
+  <style>
+    /* Make menu images larger and uniform */
+    .filters-content .img-box img {
+      width: 180px;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px #00000022;
+      background: #fff7e6;
+      margin-bottom: 10px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    @media (max-width: 576px) {
+      .filters-content .img-box img {
+        width: 100px;
+        height: 80px;
+      }
+    }
+  </style>
   <!-- responsive style -->
   <link href="css/responsive.css" rel="stylesheet" />
 
@@ -53,16 +74,33 @@
           </button>
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mx-auto"></ul>
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#menu">Menu</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#about">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#contact">Contact</a>
+              </li>
+            </ul>
             <div class="user_option">
-              <a href="" class="user_link"></a>
-              <a class="cart_link" href="#">
-                <!-- cart icon SVG -->
+              <a href="#login" class="user_link" aria-label="User Login">
+                <i class="fa fa-user"></i>
               </a>
-              <form class="form-inline">
-                <button class="btn my-2 my-sm-0 nav_search-btn" type="submit"></button>
+              <a class="cart_link" href="#cart" aria-label="View Cart">
+                <i class="fa fa-shopping-cart"></i>
+              </a>
+              <form class="form-inline" role="search" aria-label="Site Search">
+                <button class="btn my-2 my-sm-0 nav_search-btn" type="submit">
+                  <i class="fa fa-search"></i>
+                </button>
               </form>
-              <a href="" class="order_online">Order Online</a>
+              <a href="#menu" class="order_online">Order Online</a>
             </div>
           </div>
         </nav>
@@ -74,16 +112,61 @@
         <div class="carousel-inner">
           <div class="carousel-item active">
             <div class="container ">
-              <div class="row">
+              <div class="row align-items-center">
                 <div class="col-md-7 col-lg-6 ">
-                  <div class="detail-box">                      </a>
-                    </div>
+                  <div class="detail-box">
+                    <h1>Delicious Fast Food Delivered</h1>
+                    <p>Enjoy our special rice dishes, loaded fries, and more. Fresh, fast, and tasty!</p>
+                    <a href="#menu" class="btn btn-primary">Order Now</a>
                   </div>
+                </div>
+                <div class="col-md-5 col-lg-6">
+                  <img src="images/f1.png" alt="Featured Food" class="img-fluid rounded shadow">
                 </div>
               </div>
             </div>
           </div>
-          
+          <div class="carousel-item">
+            <div class="container ">
+              <div class="row align-items-center">
+                <div class="col-md-7 col-lg-6 ">
+                  <div class="detail-box">
+                    <h1>Try Our Spicy Chicken Wings</h1>
+                    <p>Hot, crispy, and full of flavor. Perfect for sharing or solo cravings!</p>
+                    <a href="#menu" class="btn btn-primary">See Wings</a>
+                  </div>
+                </div>
+                <div class="col-md-5 col-lg-6">
+                  <img src="images/f6.png" alt="Spicy Chicken Wings" class="img-fluid rounded shadow">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="container ">
+              <div class="row align-items-center">
+                <div class="col-md-7 col-lg-6 ">
+                  <div class="detail-box">
+                    <h1>Loaded Fries Like Never Before</h1>
+                    <p>Golden fries topped with your favorite flavors. A must-try treat!</p>
+                    <a href="#menu" class="btn btn-primary">See Fries</a>
+                  </div>
+                </div>
+                <div class="col-md-5 col-lg-6">
+                  <img src="images/f3.png" alt="Loaded Fries" class="img-fluid rounded shadow">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#customCarousel1" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#customCarousel1" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
         <div class="container">
           <ol class="carousel-indicators">
             <li data-target="#customCarousel1" data-slide-to="0" class="active"></li>
@@ -92,7 +175,6 @@
           </ol>
         </div>
       </div>
-
     </section>
     <!-- end slider section -->
   </div>
@@ -100,7 +182,7 @@
   <!-- food section -->
 
  <!-- food section -->
-<section class="food_section layout_padding">
+<section  id="menu" class="food_section layout_padding">
   <div class="container">
     <div class="heading_container heading_center">
       <h2>
@@ -128,7 +210,7 @@
         <div class="col-sm-6 col-lg-4 all rice">
           <div class="box">
             <div class="img-box">
-              <img src="images/fried-rice-chicken.png" alt="Fried Rice with Chicken">
+              <img src="images/fried-rice-chicken.jpg" alt="Fried Rice with Chicken">
             </div>
             <div class="detail-box">
               <h5>Fried Rice with Chicken</h5>
@@ -677,7 +759,7 @@
               <input type="text" id="location" class="form-control" placeholder="Enter delivery location" />
             </div>
             <div class="btn_box">
-              <button type="submit">Book Now</button>
+              <button type="submit">Order Now</button>
             </div>
           </form>
         </div>
@@ -726,7 +808,7 @@
     let orderType = document.getElementById("orderType").value;
     let location = document.getElementById("location").value;
 
-    let message = `🍴 New Order Request:%0A
+    let message = `New Order Request %0A
     Name: ${name}%0A
     Phone: ${phone}%0A
     Meal: ${meal}%0A
@@ -805,7 +887,7 @@
             Everyday
           </p>
           <p>
-            10.00 Am -12.00 Am
+            10.00 AM -12.00 AM
           </p>
         </div>
       </div>
