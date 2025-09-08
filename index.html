@@ -27,144 +27,7 @@
 
   <!-- Custom styles for this template -->
   <link href="css/style.css" rel="stylesheet" />
-  <style>
-    /* Modern menu card enhancements */
-    .food_section .box {
-      background: #fff;
-      border-radius: 18px;
-      box-shadow: 0 4px 24px #ffbe3340;
-      padding: 18px 12px 18px 12px;
-      margin-bottom: 32px;
-      transition: transform 0.18s, box-shadow 0.18s;
-      min-height: 320px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      border: 2px solid #ffbe33;
-      position: relative;
-    }
-    .food_section .box:hover {
-      transform: translateY(-6px) scale(1.03);
-      box-shadow: 0 8px 32px #ffbe3340;
-      border-color: #e69c00;
-    }
-    .food_section .img-box {
-      width: 320px;
-      height: 220px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #fff7e6;
-      border-radius: 16px;
-      box-shadow: 0 2px 12px #00000018;
-      margin-bottom: 12px;
-      overflow: hidden;
-    }
-    .food_section .img-box img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 16px;
-      box-shadow: none;
-      background: transparent;
-      margin-bottom: 0;
-      display: block;
-    }
-    .food_section .detail-box h5 {
-      color: #ffbe33;
-      font-size: 1.25rem;
-      font-weight: 700;
-      margin-bottom: 8px;
-      text-align: center;
-    }
-    .food_section .detail-box p {
-      color: #333;
-      font-size: 1.05rem;
-      margin-bottom: 0;
-      text-align: center;
-    }
-    .food_section .options h6 {
-      color: #222831;
-      font-size: 1.1rem;
-      font-weight: 600;
-      margin-top: 10px;
-      text-align: center;
-    }
-    /* Responsive for menu cards */
-    @media (max-width: 991px) {
-      .food_section .img-box {
-        width: 200px;
-        height: 140px;
-      }
-      .food_section .box {
-        min-height: 200px;
-        padding: 10px 4px;
-      }
-    }
-    @media (max-width: 576px) {
-      .food_section .img-box {
-        width: 120px;
-        height: 80px;
-      }
-      .food_section .box {
-        min-height: 120px;
-        padding: 4px 1px;
-      }
-    }
-  </style>
-  <style>
-    /* Make menu images larger and uniform */
-    .filters-content .img-box {
-      width: 100%;
-      max-width: 320px;
-      height: 180px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #fff7e6;
-      border-radius: 16px;
-      box-shadow: 0 2px 12px #00000018;
-      margin-bottom: 12px;
-      overflow: hidden;
-    }
-    .filters-content .img-box img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 16px;
-      box-shadow: none;
-      background: transparent;
-      margin-bottom: 0;
-      display: block;
-    }
-    @media (max-width: 767px) {
-      .filters-content .img-box {
-        max-width: 100%;
-        width: 100%;
-        height: 120px;
-        min-width: 0;
-      }
-      .filters-content .img-box img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-      .food_section .box {
-        padding: 8px 2px;
-        margin-bottom: 16px;
-        min-height: 0;
-      }
-      .food_section .detail-box h5 {
-        font-size: 1rem;
-      }
-      .food_section .detail-box p {
-        font-size: 0.95rem;
-      }
-      .food_section .options h6 {
-        font-size: 0.98rem;
-      }
-    }
-  </style>
+  
   <!-- responsive style -->
   <link href="css/responsive.css" rel="stylesheet" />
 
@@ -199,24 +62,18 @@
                 <a class="nav-link" href="#menu">Menu</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#about">About</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#contact">Contact</a>
+                <a class="nav-link" href="https://wa.me/233202995668" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+                  <i class="fa fa-whatsapp" aria-hidden="true"></i> WhatsApp
+                </a>
               </li>
             </ul>
             <div class="user_option">
-              <a href="#login" class="user_link" aria-label="User Login">
-                <i class="fa fa-user"></i>
-              </a>
-              <a class="cart_link" href="#cart" aria-label="View Cart">
-                <i class="fa fa-shopping-cart"></i>
-              </a>
-              <form class="form-inline" role="search" aria-label="Site Search">
-                <button class="btn my-2 my-sm-0 nav_search-btn" type="submit">
+              <div class="nav_search" aria-label="Site Search">
+                <input id="navSearchInput" type="text" class="nav_search-input" placeholder="Search menu..." aria-label="Search menu" />
+                <button id="navSearchToggle" class="btn my-2 my-sm-0 nav_search-btn" type="button" aria-label="Toggle search">
                   <i class="fa fa-search"></i>
                 </button>
-              </form>
+              </div>
               <a href="#menu" class="order_online">Order Online</a>
             </div>
           </div>
@@ -232,13 +89,13 @@
               <div class="row align-items-center">
                 <div class="col-md-7 col-lg-6 ">
                   <div class="detail-box">
-                    <h1>Delicious Fast Food Delivered</h1>
-                    <p>Enjoy our special rice dishes, loaded fries, and more. Fresh, fast, and tasty!</p>
+                    <h1>Good Food. Fast.</h1>
+                    <p>Rice bowls, wings and fries made fresh for you.</p>
                     <a href="#menu" class="btn btn-primary">Order Now</a>
                   </div>
                 </div>
                 <div class="col-md-5 col-lg-6">
-                  <img src="images/f1.png" alt="Featured Food" class="img-fluid rounded shadow">
+                  <img src="images/f1.png" alt="Featured Food" class="img-fluid rounded shadow" loading="lazy">
                 </div>
               </div>
             </div>
@@ -254,7 +111,7 @@
                   </div>
                 </div>
                 <div class="col-md-5 col-lg-6">
-                  <img src="images/f6.png" alt="Spicy Chicken Wings" class="img-fluid rounded shadow">
+                  <img src="images/f6.png" alt="Spicy Chicken Wings" class="img-fluid rounded shadow" loading="lazy">
                 </div>
               </div>
             </div>
@@ -270,7 +127,7 @@
                   </div>
                 </div>
                 <div class="col-md-5 col-lg-6">
-                  <img src="images/f3.png" alt="Loaded Fries" class="img-fluid rounded shadow">
+                  <img src="images/f3.png" alt="Loaded Fries" class="img-fluid rounded shadow" loading="lazy">
                 </div>
               </div>
             </div>
@@ -310,14 +167,19 @@
     <!-- filter buttons -->
     <ul class="filters_menu">
       <li class="active" data-filter="*">All</li>
-      <li data-filter=".rice">Rice Dishes</li>
-      <li data-filter=".noodles">Special Noodles</li>
-      <li data-filter=".fries">Loaded Fries</li>
-      <li data-filter=".yam">Special Fried Yam</li>
-      <li data-filter=".wings">Spicy Chicken Wings</li>
-      <li data-filter=".fish">Fisherman's Special</li>
-      <li data-filter=".wraps">Ghanaian Wraps</li>
-      <li data-filter=".sauce">Spicy Sauce</li>
+      <li data-filter=".rice">Rice</li>
+      <li data-filter=".wings">Wings</li>
+      <li data-filter=".wraps">Wraps</li>
+      <li class="more">
+        <button type="button" id="moreFiltersBtn" aria-expanded="false">More</button>
+        <ul class="more-menu" aria-label="More categories">
+          <li data-filter=".noodles">Noodles</li>
+          <li data-filter=".fries">Fries</li>
+          <li data-filter=".yam">Yam</li>
+          <li data-filter=".fish">Fish</li>
+          <li data-filter=".sauce">Sauce</li>
+        </ul>
+      </li>
     </ul>
 
     <div class="filters-content">
@@ -326,8 +188,9 @@
         <!-- ✅ Fried Rice with Chicken -->
         <div class="col-sm-6 col-lg-4 all rice">
           <div class="box">
+            <span class="food_badge bestseller">Best Seller</span>
             <div class="img-box">
-              <img src="images/fried-rice-chicken.jpg" alt="Fried Rice with Chicken">
+              <img src="images/fried-rice-chicken.jpg" alt="Fried Rice with Chicken" loading="lazy">
             </div>
             <div class="detail-box">
               <h5>Fried Rice with Chicken</h5>
@@ -343,7 +206,7 @@
         <div class="col-sm-6 col-lg-4 all rice">
           <div class="box">
             <div class="img-box">
-              <img src="images/jollof-chicken.png" alt="Jollof Rice with Chicken">
+              <img src="images/jollof-chicken.png" alt="Jollof Rice with Chicken" loading="lazy">
             </div>
             <div class="detail-box">
               <h5>Jollof Rice with Chicken</h5>
@@ -359,7 +222,7 @@
         <div class="col-sm-6 col-lg-4 all rice">
           <div class="box">
             <div class="img-box">
-              <img src="images/assorted-fried-rice.png" alt="Assorted Fried Rice">
+              <img src="images/assorted-fried-rice.png" alt="Assorted Fried Rice" loading="lazy">
             </div>
             <div class="detail-box">
               <h5>Assorted Fried Rice</h5>
@@ -615,6 +478,7 @@
 <!-- ✅ Chicken Wings with Chips -->
 <div class="col-sm-6 col-lg-4 all wings">
   <div class="box">
+    <span class="food_badge spicy">Spicy</span>
     <div class="img-box">
       <img src="images/wings-chips.png" alt="Chicken Wings with Chips">
     </div>

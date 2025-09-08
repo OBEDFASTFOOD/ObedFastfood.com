@@ -8,25 +8,87 @@ function getYear() {
 getYear();
 
 
-// isotope js
+// isotope js + filters + search
 $(window).on('load', function () {
-    $('.filters_menu li').click(function () {
-        $('.filters_menu li').removeClass('active');
-        $(this).addClass('active');
-
-        var data = $(this).attr('data-filter');
-        $grid.isotope({
-            filter: data
-        })
-    });
-
     var $grid = $(".grid").isotope({
         itemSelector: ".all",
         percentPosition: false,
-        masonry: {
-            columnWidth: ".all"
+        masonry: { columnWidth: ".all" }
+    });
+
+    var textRegex = null;
+    var buttonFilter = '*';
+
+    function applyFilters() {
+        $grid.isotope({
+            filter: function () {
+                var $item = $(this);
+                var matchesText = textRegex ? $item.text().toLowerCase().match(textRegex) : true;
+                var matchesCategory = buttonFilter === '*' ? true : $item.is(buttonFilter);
+                return matchesText && matchesCategory;
+            }
+        });
+    }
+
+    // Category filters (including More menu)
+    $('.filters_menu').on('click', 'li[data-filter]', function () {
+        $('.filters_menu li').removeClass('active');
+        $(this).addClass('active');
+        buttonFilter = $(this).attr('data-filter') || '*';
+        applyFilters();
+
+        // Mark selected in More menu when applicable
+        var $mm = $('.filters_menu .more .more-menu li');
+        $mm.removeClass('selected');
+        $mm.filter('[data-filter="' + buttonFilter + '"]') .addClass('selected');
+    });
+
+    // More dropdown toggle
+    $('#moreFiltersBtn').on('click', function () {
+        var $parent = $(this).closest('.more');
+        var open = $parent.hasClass('open');
+        $parent.toggleClass('open', !open);
+        $(this).attr('aria-expanded', !open);
+    });
+    // Close More on outside tap (mobile friendly)
+    $(document).on('click', function (e) {
+        var $more = $('.filters_menu .more');
+        if (!$more.is(e.target) && $more.has(e.target).length === 0) {
+            $more.removeClass('open');
+            $('#moreFiltersBtn').attr('aria-expanded', 'false');
         }
-    })
+    });
+    // Close More when clicking an item
+    $('.filters_menu .more .more-menu').on('click', 'li[data-filter]', function () {
+        var $more = $(this).closest('.more');
+        $more.removeClass('open');
+        $('#moreFiltersBtn').attr('aria-expanded', 'false');
+    });
+
+    // Navbar expanding search
+    var $searchToggle = $('#navSearchToggle');
+    var $searchInput = $('#navSearchInput');
+
+    $searchToggle.on('click', function () {
+        $searchInput.toggleClass('active');
+        if ($searchInput.hasClass('active')) {
+            $searchInput.focus();
+        } else {
+            $searchInput.val('');
+            textRegex = null;
+            applyFilters();
+        }
+    });
+
+    var debounceTimer;
+    $searchInput.on('keyup', function () {
+        var value = $(this).val().toString().toLowerCase().trim();
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(function () {
+            textRegex = value ? new RegExp(value, 'i') : null;
+            applyFilters();
+        }, 120);
+    });
 });
 
 // nice select
