@@ -748,15 +748,33 @@
       <!-- Booking Form -->
       <div class="col-md-6">
         <div class="form_container">
-          <form onsubmit="sendToWhatsApp(event)">
-            <div>
-              <input type="text" id="name" class="form-control" placeholder="Your Name" required />
+          <form onsubmit="return validateForm(event)">
+            <div class="form-group">
+              <input type="text" 
+                id="name" 
+                class="form-control" 
+                placeholder="Your Name" 
+                pattern="[A-Za-z ]{2,50}"
+                title="Name should only contain letters and spaces, 2-50 characters"
+                required />
             </div>
-            <div>
-              <input type="text" id="phone" class="form-control" placeholder="Phone Number" required />
+            <div class="form-group">
+              <input type="tel" 
+                id="phone" 
+                class="form-control" 
+                placeholder="Phone Number (e.g., 0201234567)" 
+                pattern="(\+233|0)(20|24|23|26|27|23|55|54|50|57|28|56)\d{7}"
+                title="Please enter a valid Ghana phone number"
+                required />
             </div>
-            <div>
-              <input type="text" id="meal" class="form-control" placeholder="Meal(s) you want" required />
+            <div class="form-group">
+              <input type="text" 
+                id="meal" 
+                class="form-control" 
+                placeholder="Meal(s) you want" 
+                minlength="3"
+                title="Please enter at least 3 characters"
+                required />
             </div>
             <div>
               <select id="quantity" class="form-control nice-select wide" required>
@@ -823,15 +841,44 @@
     }
   }
 
-  function sendToWhatsApp(event) {
+  function validateForm(event) {
     event.preventDefault();
-
+    
+    // Get form values
     let name = document.getElementById("name").value;
     let phone = document.getElementById("phone").value;
     let meal = document.getElementById("meal").value;
     let quantity = document.getElementById("quantity").value;
     let orderType = document.getElementById("orderType").value;
     let location = document.getElementById("location").value;
+
+    // Validate name (letters and spaces only)
+    let nameRegex = /^[A-Za-z ]{2,50}$/;
+    if (!nameRegex.test(name)) {
+      alert("Please enter a valid name (letters and spaces only)");
+      return false;
+    }
+
+    // Validate phone (Ghana phone format)
+    let phoneRegex = /^(\+233|0)(20|24|23|26|27|23|55|54|50|57|28|56)\d{7}$/;
+    if (!phoneRegex.test(phone)) {
+      alert("Please enter a valid Ghana phone number");
+      return false;
+    }
+
+    // Validate meal (minimum 3 characters)
+    if (meal.trim().length < 3) {
+      alert("Please enter a valid meal name (minimum 3 characters)");
+      return false;
+    }
+
+    // Validate location if delivery is selected
+    if (orderType === "Delivery" && location.trim().length < 5) {
+      alert("Please enter a valid delivery location");
+      return false;
+    }
+
+    // If validation passes, send to WhatsApp
 
     let message = `New Order Request %0A
     Name: ${name}%0A
